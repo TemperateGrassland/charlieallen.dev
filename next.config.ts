@@ -2,9 +2,9 @@
 
 const nextConfig = {
   output: "export",
+  trailingSlash: true, // helps static hosting (optional but often smoother)
   images: {
     unoptimized: true,
-    trailingSlash: true, // helps static hosting (optional but often smoother)
   },
 };
 

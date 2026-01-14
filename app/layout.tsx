@@ -1,5 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://charlieallen.dev"), // replace with your real domain
@@ -36,7 +38,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="flex min-h-screen flex-col antialiased">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

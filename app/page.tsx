@@ -19,7 +19,7 @@ export default function Home() {
               Freelance Software Engineer
             </p>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
-              I build fast, scalable applications and Shopify integrations that help businesses grow.
+              I build fast, scalable applications and integrations that help businesses grow.
             </p>
 
             {/* CTA Buttons */}

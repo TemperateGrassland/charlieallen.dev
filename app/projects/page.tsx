@@ -9,7 +9,13 @@ export default function Projects() {
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       githubUrl: "https://github.com/TemperateGrassland/never-forget",
       demoUrl: "https://neverforget.one",
-    }
+    },
+    {
+      title: "Years of professional experience",
+      description:
+        "My experience spans designing backend APIs, building responsive user interfaces, and running software in live environments where downtime isn’t an option. \n\nI’ve worked closely with product, platform, and data teams to turn requirements into dependable systems that are easy to use and easy to maintain.\n\nThis background shapes how I approach freelance work: clear communication, sensible technical decisions, and a strong focus on the people who will actually use the software—whether that’s customers, internal teams, or volunteers.",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    },
   ];
 
   return (

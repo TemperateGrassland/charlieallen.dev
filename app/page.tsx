@@ -18,9 +18,11 @@ export default function Home() {
             <p className="mt-4 text-xl text-zinc-600 dark:text-zinc-400 sm:text-2xl">
               Freelance Software Engineer
             </p>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
-              I build fast, scalable applications and integrations that help businesses grow.
-            </p>
+            <div className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <p>I build fast, scalable applications and integrations that help businesses grow.</p>
+              <p>Looking for help building or improving a digital product?</p>
+              <p>Let’s explore what’s possible.</p>
+            </div>
 
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">

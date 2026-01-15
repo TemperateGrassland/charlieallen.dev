@@ -16,7 +16,7 @@ export default function Home() {
               Charlie Allen
             </h1>
             <p className="mt-4 text-xl text-zinc-600 dark:text-zinc-400 sm:text-2xl">
-              Freelance Software Engineer
+              Software Engineer
             </p>
             <div className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
               <p>I build fast, scalable applications and integrations that help businesses grow.</p>

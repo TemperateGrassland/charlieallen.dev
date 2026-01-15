@@ -13,8 +13,11 @@ const headers = {
 };
 
 export const handler = async (event) => {
+  // Extract HTTP method (supports both HTTP API v2.0 and REST API formats)
+  const httpMethod = event.requestContext?.http?.method || event.httpMethod;
+
   // Handle preflight OPTIONS request
-  if (event.httpMethod === "OPTIONS") {
+  if (httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
       headers,
@@ -23,7 +26,7 @@ export const handler = async (event) => {
   }
 
   // Only allow POST requests
-  if (event.httpMethod !== "POST") {
+  if (httpMethod !== "POST") {
     return {
       statusCode: 405,
       headers,
@@ -32,8 +35,12 @@ export const handler = async (event) => {
   }
 
   try {
-    // Parse the request body
-    const body = JSON.parse(event.body);
+    // Parse the request body (handle base64 encoding for HTTP API v2.0)
+    let bodyString = event.body;
+    if (event.isBase64Encoded) {
+      bodyString = Buffer.from(event.body, 'base64').toString('utf-8');
+    }
+    const body = JSON.parse(bodyString);
     const { name, email, message } = body;
 
     // Validate required fields
@@ -42,6 +49,23 @@ export const handler = async (event) => {
         statusCode: 400,
         headers,
         body: JSON.stringify({ error: "Missing required fields" }),
+      };
+    }
+
+    // Validate field lengths (prevent abuse)
+    if (name.length > 100) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: "Name is too long (max 100 characters)" }),
+      };
+    }
+
+    if (message.length > 5000) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: "Message is too long (max 5000 characters)" }),
       };
     }
 
@@ -54,6 +78,18 @@ export const handler = async (event) => {
         body: JSON.stringify({ error: "Invalid email address" }),
       };
     }
+
+    // Helper function to escape HTML (prevents HTML injection in emails)
+    const escapeHtml = (text) => {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, (m) => map[m]);
+    };
 
     // Prepare email parameters
     const params = {
@@ -102,14 +138,14 @@ This email was sent from your portfolio website contact form.
     </div>
     <div class="content">
       <div class="field">
-        <span class="label">Name:</span> ${name}
+        <span class="label">Name:</span> ${escapeHtml(name)}
       </div>
       <div class="field">
-        <span class="label">Email:</span> <a href="mailto:${email}">${email}</a>
+        <span class="label">Email:</span> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a>
       </div>
       <div class="field">
         <span class="label">Message:</span>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
       </div>
     </div>
     <div class="footer">

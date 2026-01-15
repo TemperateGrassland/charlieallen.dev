@@ -3,9 +3,9 @@ import ProjectCard from "../components/ProjectCard";
 export default function Projects() {
   const projects = [
     {
-      title: "Never Forget",
+      title: "never forget",
       description:
-        "Never Forget is a reminder service built on Whatsapp. It helps people stay on top of what matters—without complexity or friction.\n\nIt's designed around real-world use: fast to load, easy to understand, and intuitive to use across devices. Every interaction is intentional, from creating reminders to checking off tasks, ensuring users can focus on their day rather than the tool itself.\n\nBehind the scenes, the platform is built to be dependable and scalable, making it well-suited for individuals, teams, and organisations that value clarity, consistency, and a strong customer experience.",
+        "never forget is a reminder service built on Whatsapp. It helps people stay on top of what matters—without complexity or friction.\n\nIt's designed around real-world use: fast to load, easy to understand, and intuitive to use across devices. Every interaction is intentional, from creating reminders to checking off tasks, ensuring users can focus on their day rather than the tool itself.\n\nBehind the scenes, the platform is built to be dependable and scalable, making it well-suited for individuals, teams, and organisations that value clarity, consistency, and a strong customer experience.",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       githubUrl: "https://github.com/TemperateGrassland/never-forget",
       demoUrl: "https://neverforget.one",

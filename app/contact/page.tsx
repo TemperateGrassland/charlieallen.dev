@@ -44,19 +44,38 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Call Lambda endpoint
+      const apiEndpoint = process.env.NEXT_PUBLIC_CONTACT_API_URL || '/api/contact';
 
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
+      const data = await response.json();
 
-    // Reset success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setErrors({ submit: 'Failed to send message. Please try again or email directly.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -124,6 +143,13 @@ export default function Contact() {
                 <div className="mb-6 rounded-lg bg-green-50 p-4 text-green-800 dark:bg-green-900/20 dark:text-green-400">
                   <p className="font-medium">Message sent successfully!</p>
                   <p className="text-sm">I'll get back to you as soon as possible.</p>
+                </div>
+              )}
+
+              {errors.submit && (
+                <div className="mb-6 rounded-lg bg-red-50 p-4 text-red-800 dark:bg-red-900/20 dark:text-red-400">
+                  <p className="font-medium">Error</p>
+                  <p className="text-sm">{errors.submit}</p>
                 </div>
               )}
 

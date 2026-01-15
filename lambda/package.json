@@ -1,0 +1,13 @@
+{
+  "name": "contact-form-lambda",
+  "version": "1.0.0",
+  "description": "Lambda function for handling contact form submissions",
+  "main": "contact-form.js",
+  "type": "module",
+  "scripts": {
+    "package": "zip -r function.zip contact-form.js node_modules"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.0.0"
+  }
+}

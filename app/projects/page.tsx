@@ -1,11 +1,42 @@
 import ProjectCard from "../components/ProjectCard";
 
+const neverForgetJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Never Forget",
+  description:
+    "A WhatsApp-first reminder service that sends reminders days before important dates, giving users time to prepare. Built with Next.js 15, PostgreSQL, Prisma, Stripe, and Meta's WhatsApp Cloud API.",
+  applicationCategory: "ProductivityApplication",
+  operatingSystem: "Web",
+  url: "https://neverforget.one",
+  datePublished: "2025-01-01",
+  softwareVersion: "1.0.0",
+  author: {
+    "@type": "Person",
+    name: "Charlie Allen",
+    url: "https://charlieallen.dev",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "GBP",
+  },
+  featureList: [
+    "WhatsApp message delivery",
+    "Advance notice scheduling",
+    "Monthly usage tracking",
+    "Stripe subscription management",
+  ],
+  // Add screenshot URL when available:
+  // screenshot: "https://charlieallen.dev/images/never-forget-screenshot.png",
+};
+
 export default function Projects() {
   const projects = [
     {
       title: "never forget",
       description:
-        "never forget is a reminder service built on Whatsapp. It helps people stay on top of what matters—without complexity or friction.\n\nIt's designed around real-world use: fast to load, easy to understand, and intuitive to use across devices. Every interaction is intentional, from creating reminders to checking off tasks, ensuring users can focus on their day rather than the tool itself.\n\nBehind the scenes, the platform is built to be dependable and scalable, making it well-suited for individuals, teams, and organisations that value clarity, consistency, and a strong customer experience.",
+        "never forget is a reminder service built on Whatsapp. It helps people stay on top of what matters—without complexity or friction.\n\nI built never forget to meet users where they already are: WhatsApp. Instead of another app to install, reminders arrive as WhatsApp messages days before the date—giving users time to buy a gift or make plans.\n\nIt's designed around real-world use: fast to load, easy to understand, and intuitive to use across devices. Every interaction is intentional, from creating reminders to checking off tasks, ensuring users can focus on their day rather than the tool itself.\n\n",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
       githubUrl: "https://github.com/TemperateGrassland/never-forget",
       demoUrl: "https://neverforget.one",
@@ -25,7 +56,12 @@ export default function Projects() {
   ];
 
   return (
-    <div className="bg-zinc-50 dark:bg-black">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(neverForgetJsonLd) }}
+      />
+      <div className="bg-zinc-50 dark:bg-black">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         {/* Header */}
         <div className="mb-12">
@@ -70,5 +106,6 @@ export default function Projects() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -4,28 +4,27 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://charlieallen.dev"), // replace with your real domain
+  metadataBase: new URL("https://charlieallen.dev"),
   title: {
-    default: "Shopify & WhatsApp Integrations | Freelance Developer",
-    template: "%s | Shopify & WhatsApp Integrations",
+    default: "Charlie Allen | Freelance Software Engineer",
+    template: "%s | Charlie Allen",
   },
   description:
-    "Freelance developer specialising in high-converting Shopify stores and WhatsApp integrations that drive sales, retention, and automation.",
+    "Freelance software engineer. Four years building AI at Amazon Alexa, two years in cybersecurity at Darktrace, now building and shipping software for the people who need it.",
   keywords: [
-    "Shopify developer UK",
-    "Shopify freelancer UK",
-    "Shopify store development",
-    "WhatsApp integrations UK",
-    "WhatsApp automation UK",
-    "ecommerce automation",
-    "Shopify WhatsApp integration UK",
+    "freelance software engineer UK",
+    "software engineer for hire",
+    "full-stack developer UK",
+    "web application developer",
+    "build software for my business",
+    "product engineer freelance",
   ],
   openGraph: {
-    title: "Shopify & WhatsApp Integrations | Freelance Developer",
+    title: "Charlie Allen | Freelance Software Engineer",
     description:
-      "I build fast, scalable Shopify stores and WhatsApp integrations that help businesses sell more and automate customer engagement.",
+      "Four years building AI at Amazon Alexa, two years in cybersecurity at Darktrace. Now I build software people can rely on.",
     url: "https://charlieallen.dev",
-    siteName: "Shopify & WhatsApp Integrations",
+    siteName: "Charlie Allen",
     type: "website",
   },
   icons: {

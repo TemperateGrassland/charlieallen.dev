@@ -98,7 +98,7 @@ export default function Contact() {
             Get in Touch
           </h1>
           <p className="mt-4 text-lg text-zinc-700 dark:text-zinc-300">
-            Have a project in mind? Let's discuss how I can help bring your ideas
+            Have a project in mind? Let’s discuss how I can help bring your ideas
             to life.
           </p>
           <div className="mt-4 h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-600" />
@@ -142,7 +142,7 @@ export default function Contact() {
               {isSubmitted && (
                 <div className="mb-6 rounded-lg bg-green-50 p-4 text-green-800 dark:bg-green-900/20 dark:text-green-400">
                   <p className="font-medium">Message sent successfully!</p>
-                  <p className="text-sm">I'll get back to you as soon as possible.</p>
+                  <p className="text-sm">I’ll get back to you as soon as possible.</p>
                 </div>
               )}
 
